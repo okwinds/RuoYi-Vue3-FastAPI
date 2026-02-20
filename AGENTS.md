@@ -16,14 +16,15 @@
    - 先写文档，再改代码；写代码必须严格 follow 文档。
    - 文档至少包含：目标、约束、接口/事件协议、验收标准、测试计划（含离线回归与可选集成）。
    - 技能的使用
-      - 你可以视情况使用 prd-writing-guid 或 ai-agent-prd 来完成 prd 文档
-      - 可以视情况使用 prd-to-uiux-rd-spec 来完成从 prd 到 ui/ux 规格文档的撰写
-      - 其他部分的规格文档可以用 prd-to-engineering-spec 来撰写
+      - 你可以视情况使用技能 prd-writing-guide 或 ai-agent-prd 来完成 prd 文档
+      - 可以视情况使用技能 prd-to-uiux-rd-spec 来完成从 prd 到 ui/ux 规格文档的撰写
+      - 其他部分的规格文档可以用技能 prd-to-engineering-spec 来撰写
 
 2) **测试驱动交付（TDD as Gate）**
    - “功能完成”的定义：相关测试通过（最少离线回归必须通过）。
    - 新增/修复必须伴随新增/更新测试（避免回归）。
-   - 你可以使用技能 tdd-workflow 指导 TDD
+   - 你可以使用技能 tdd-workflow 指导 TDD。
+   - 当完成编码准备交付的时候，需要使用技能 code-review-excellence 整体 review 代码，保证质量。
 
 3) **通用性优先（Avoid Overfitting）**
    - 进入可复用资产（例如 `skills/`、`libs/`、`templates/`）的内容必须可迁移、可复现。
@@ -38,7 +39,7 @@
    - 不提交密钥；使用 `.env.example` 描述配置项；真实 `.env` 仅本地使用。
 
 6) **通知要求（Notice requirements）**
-   - 一轮任务开始的时候需要记住当前的时间，一轮任务结束时需要比较一下开始的时间，如果超过 20 分钟，则需要使用技能 dayapp-mobile-push 发出通知
+   - 一轮任务开始的时候需要记住当前的时间，一轮任务结束时需要比较一下开始的时间，如果超过 10 分钟，则需要使用技能 dayapp-mobile-push 发出通知
    - 遇到需要决策的时候，需要使用技能 dayapp-mobile-push 发出通知
 
 7) **文档语言（Language）**
