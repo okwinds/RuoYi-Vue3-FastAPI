@@ -1,9 +1,9 @@
 # Spec Pointer Validation Report（对照表指针有效性校验）
 
-generated: `2026-02-14 19:47:34 CST`
+generated: `2026-02-16 16:23:58 CST`
 
 - Source map: `docs/codebase-spec/09_Verification/CODE_TO_SPEC_MAP.md`
-- Pointers extracted: 74
+- Pointers extracted: 76
 - Missing pointers: 0
 
 ## Result

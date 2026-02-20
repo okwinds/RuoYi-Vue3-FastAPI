@@ -25,8 +25,10 @@
 | APP_NAME | str | RuoYi-FasAPI | 应用名称 | ruoyi-fastapi-backend/.env.* |
 | APP_PORT | int | 9099 | 应用端口 | ruoyi-fastapi-backend/.env.* |
 | APP_RELOAD | bool | true | 应用是否开启热重载 | ruoyi-fastapi-backend/.env.* |
+| APP_WORKERS | int | 1 | 应用工作进程数 | ruoyi-fastapi-backend/.env.* |
 | APP_ROOT_PATH | str | /dev-api | 应用代理路径 | ruoyi-fastapi-backend/.env.* |
 | APP_SAME_TIME_LOGIN | bool | true | 应用是否允许账号同时登录 | ruoyi-fastapi-backend/.env.* |
+| APP_DEMO_MODE | bool | false | 应用是否为演示模式（开启后会拦截写操作） | ruoyi-fastapi-backend/.env.* |
 | APP_VERSION | str | 1.0.0 | 应用版本 | ruoyi-fastapi-backend/.env.* |
 
 ### 鉴权（JWT）

@@ -15,8 +15,10 @@
 | Flag | Type | Default（dev） | Description | Affects |
 | --- | --- | --- | --- | --- |
 | `APP_RELOAD` | bool | `true` | 是否开启热重载（开发环境建议开启，生产关闭） | 后端启动方式（uvicorn reload） |
+| `APP_WORKERS` | int | `1` | Uvicorn worker 数（>1 时会改变任务调度等行为） | 后端进程模型、Scheduler 任务状态同步 |
 | `APP_IP_LOCATION_QUERY` | bool | `true` | 是否启用 IP 归属地查询 | 登录/日志等信息展示 |
 | `APP_SAME_TIME_LOGIN` | bool | `true` | 是否允许同账号同时登录 | token 在 Redis 的 key 策略（session_id vs user_id） |
+| `APP_DEMO_MODE` | bool | `false` | 是否启用“演示模式”（拦截写操作与部分敏感接口） | 写操作拦截、生成器建表、注册等 |
 | `APP_DISABLE_SWAGGER` | bool | `false`（prod 为 `true`） | 是否禁用 Swagger 文档 | API 文档页面与 E2E 断言 |
 | `APP_DISABLE_REDOC` | bool | `false`（prod 为 `true`） | 是否禁用 ReDoc 文档 | API 文档页面 |
 | `DB_TYPE` | enum | `mysql` | 选择 MySQL / PostgreSQL | DB 连接串、方言、初始化脚本选择 |
@@ -36,7 +38,48 @@
   - Dockerfile 内也会通过 `--env=dockermy` / `--env=dockerpg` 选择对应 `.env.*`
 - `BaseSettings` 会把环境变量映射到 Settings 字段（例如 `APP_ROOT_PATH` → `app_root_path`）。
 
-### 2.2 前端（Build-time ENV + Runtime Store）
+### 2.2 演示模式（Demo Mode）
+
+当 `APP_DEMO_MODE=true` 时，后端会按启动时配置动态加入“演示模式中间件”，并在运行期拦截写操作。
+
+- Source：
+  - `ruoyi-fastapi-backend/config/env.py`（`app_demo_mode` / `APP_DEMO_MODE`）
+  - `ruoyi-fastapi-backend/middlewares/handle.py`（条件加载）
+  - `ruoyi-fastapi-backend/middlewares/demo_mode_middleware.py`（拦截规则）
+
+#### 拦截规则（与当前实现一致）
+
+1) **对以下路径前缀：仅允许 `GET`，非 `GET` 均返回失败**（按“路径前缀”匹配）：
+
+- `system/user`
+- `system/role`
+- `system/menu`
+- `system/dept`
+- `system/post`
+- `system/dict`
+- `system/config`
+- `system/notice`
+- `monitor/operlog`
+- `monitor/logininfor`
+- `monitor/online`
+- `monitor/job`
+- `monitor/jobLog`
+- `monitor/cache`
+- `ai/model`
+- `ai/chat`
+
+2) **对以下路径前缀：任何方法都被拦截**：
+
+- `common`（文件上传/通用接口等）
+- `register`（注册）
+- `tool/gen/createTable`（代码生成：建表）
+
+#### 返回与日志
+
+- 返回：统一使用 `ResponseUtil.failure(msg='演示模式，不允许操作！')`（业务 `code=601`，HTTP 200）。
+- 日志：会记录 `X-Forwarded-For` 与请求 URL（warning 级别）。
+
+### 2.3 前端（Build-time ENV + Runtime Store）
 
 - Vite：只暴露 `VITE_` 前缀变量到 `import.meta.env`（页面标题、API 前缀、构建压缩策略等）。
 - 运行期布局开关来自 Pinia store：

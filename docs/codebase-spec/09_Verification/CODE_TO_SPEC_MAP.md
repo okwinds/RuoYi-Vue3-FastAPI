@@ -1,6 +1,6 @@
 # Code → Spec Map（全仓库文件级对照表）
 
-generated: `2026-02-14 19:47:34 CST`
+generated: `2026-02-16 16:23:58 CST`
 
 用途：对全仓库文件做“代码 → 规格文档”映射，确保每个文件都能被某份规格文档解释或被契约快照覆盖。
 
@@ -9,16 +9,16 @@ generated: `2026-02-14 19:47:34 CST`
 - 规格主入口：`docs/codebase-spec/SPEC_INDEX.md`；UI-only 规格：`docs/ui-ux-spec/`。
 
 ## Summary
-- Files scanned: 523
-- Mapped: 523
+- Files scanned: 563
+- Mapped: 563
 - Unmapped: 0
 
 | Category | Count |
 | --- | ---: |
-| Frontend Assets | 102 |
+| Frontend Assets | 110 |
 | Frontend UI | 87 |
-| Frontend Other | 46 |
-| Mobile Other | 44 |
+| Frontend Other | 55 |
+| Mobile Other | 49 |
 | E2E Tests | 27 |
 | Frontend API Client | 21 |
 | Backend Service | 20 |
@@ -29,9 +29,9 @@ generated: `2026-02-14 19:47:34 CST`
 | Backend DAO | 15 |
 | Backend DO (DB/Domain Models) | 13 |
 | Backend Common | 11 |
-| Backend Middlewares | 8 |
-| Backend Other | 6 |
-| Backend Config | 5 |
+| Backend Middlewares | 9 |
+| Backend Other | 17 |
+| Backend Config | 9 |
 | Docker/Compose | 4 |
 | Mobile Store | 4 |
 | Dockerfile | 3 |
@@ -41,10 +41,10 @@ generated: `2026-02-14 19:47:34 CST`
 | CI/CD | 2 |
 | DB Init SQL | 2 |
 | E2E Other | 3 |
-| Frontend Entrypoint | 2 |
+| Frontend Entrypoint | 3 |
 | Mobile Request/Auth | 2 |
 | Mobile Routing | 2 |
-| Alembic | 1 |
+| Alembic | 3 |
 | Backend Assets | 1 |
 | Changelog | 1 |
 | DocsIndex | 1 |
@@ -60,7 +60,6 @@ generated: `2026-02-14 19:47:34 CST`
 | Repo Metadata | 1 |
 | RepoHygiene | 1 |
 | Tooling | 1 |
-| UpstreamREADME | 1 |
 
 ## Mapping（按路径）
 
@@ -75,15 +74,18 @@ generated: `2026-02-14 19:47:34 CST`
 | `DOCS_INDEX.md` | DocsIndex | `DOCS_INDEX.md` | 文档索引入口 |
 | `LICENSE` | License | `LICENSE` | 许可证 |
 | `README.md` | README | `README.md` | 面向人类入口 |
-| `README.md.bak` | UpstreamREADME | `README.md.bak` | 上游 README 备份 |
 | `docker-compose.my.yml` | Docker/Compose | `docs/codebase-spec/07_Infrastructure/DOCKER.md`<br/>`docs/codebase-spec/08_Testing/E2E_SPECS.md` | 环境与测试编排 |
 | `docker-compose.pg.yml` | Docker/Compose | `docs/codebase-spec/07_Infrastructure/DOCKER.md`<br/>`docs/codebase-spec/08_Testing/E2E_SPECS.md` | 环境与测试编排 |
+| `ruoyi-fastapi-app/.editorconfig` | Mobile Other | `docs/codebase-spec/05_Mobile_App/APP.md` | 移动端工程配置 |
+| `ruoyi-fastapi-app/.gitignore` | Mobile Other | `docs/codebase-spec/05_Mobile_App/APP.md` | 移动端工程配置 |
+| `ruoyi-fastapi-app/.npmrc` | Mobile Other | `docs/codebase-spec/05_Mobile_App/APP.md` | 移动端工程配置 |
+| `ruoyi-fastapi-app/index.html` | Mobile Other | `docs/codebase-spec/05_Mobile_App/APP.md` | 移动端工程入口（HTML） |
 | `ruoyi-fastapi-app/README.md` | Mobile Other | `docs/codebase-spec/05_Mobile_App/APP.md` | 移动端工程说明 |
 | `ruoyi-fastapi-app/netlify.toml` | Mobile Other | `docs/codebase-spec/05_Mobile_App/APP.md` | 移动端工程说明 |
 | `ruoyi-fastapi-app/package.json` | Mobile Other | `docs/codebase-spec/05_Mobile_App/APP.md` | 移动端工程说明 |
 | `ruoyi-fastapi-app/platform.ts` | Mobile Other | `docs/codebase-spec/05_Mobile_App/APP.md` | 移动端工程说明 |
-| `ruoyi-fastapi-app/pnpm-lock.yaml` | Mobile Other | `docs/codebase-spec/05_Mobile_App/APP.md` | 移动端工程说明 |
 | `ruoyi-fastapi-app/postcss.config.ts` | Mobile Other | `docs/codebase-spec/05_Mobile_App/APP.md` | 移动端工程说明 |
+| `ruoyi-fastapi-app/stylelint.config.mjs` | Mobile Other | `docs/codebase-spec/05_Mobile_App/APP.md` | 移动端工程配置（样式 lint） |
 | `ruoyi-fastapi-app/src/App.vue` | Mobile Other | `docs/codebase-spec/05_Mobile_App/APP.md` | 移动端工程说明 |
 | `ruoyi-fastapi-app/src/api/login.js` | Mobile Other | `docs/codebase-spec/05_Mobile_App/APP.md` | 移动端工程说明 |
 | `ruoyi-fastapi-app/src/api/system/dict/data.js` | Mobile Other | `docs/codebase-spec/05_Mobile_App/APP.md` | 移动端工程说明 |
@@ -93,6 +95,7 @@ generated: `2026-02-14 19:47:34 CST`
 | `ruoyi-fastapi-app/src/config.js` | Mobile Config | `docs/codebase-spec/05_Mobile_App/APP.md`<br/>`docs/codebase-spec/01_Configuration/ENVIRONMENT.md` | baseUrl 等配置 |
 | `ruoyi-fastapi-app/src/env.d.ts` | Mobile Other | `docs/codebase-spec/05_Mobile_App/APP.md` | 移动端工程说明 |
 | `ruoyi-fastapi-app/src/main.ts` | Mobile Other | `docs/codebase-spec/05_Mobile_App/APP.md` | 移动端工程说明 |
+| `ruoyi-fastapi-app/src/uni.scss` | Mobile Other | `docs/codebase-spec/05_Mobile_App/APP.md` | 移动端全局样式入口 |
 | `ruoyi-fastapi-app/src/manifest.json` | Mobile Other | `docs/codebase-spec/05_Mobile_App/APP.md` | 移动端工程说明 |
 | `ruoyi-fastapi-app/src/pages.json` | Mobile Routing | `docs/codebase-spec/05_Mobile_App/ROUTING.md` | 路由/守卫 |
 | `ruoyi-fastapi-app/src/pages/common/agreement/index.vue` | Mobile Pages | `docs/codebase-spec/05_Mobile_App/PAGES.md` | 页面模板 |
@@ -147,10 +150,16 @@ generated: `2026-02-14 19:47:34 CST`
 | `ruoyi-fastapi-app/tailwind.config.ts` | Mobile Other | `docs/codebase-spec/05_Mobile_App/APP.md` | 移动端工程说明 |
 | `ruoyi-fastapi-app/tsconfig.json` | Mobile Other | `docs/codebase-spec/05_Mobile_App/APP.md` | 移动端工程说明 |
 | `ruoyi-fastapi-app/vite.config.ts` | Mobile Other | `docs/codebase-spec/05_Mobile_App/APP.md` | 移动端工程说明 |
+| `ruoyi-fastapi-backend/.env.dev` | Backend Config | `docs/codebase-spec/01_Configuration/ENVIRONMENT.md`<br/>`docs/codebase-spec/01_Configuration/FEATURE_FLAGS.md` | 后端运行配置（dev） |
+| `ruoyi-fastapi-backend/.env.dockermy` | Backend Config | `docs/codebase-spec/01_Configuration/ENVIRONMENT.md`<br/>`docs/codebase-spec/01_Configuration/FEATURE_FLAGS.md` | 后端运行配置（dockermy） |
+| `ruoyi-fastapi-backend/.env.dockerpg` | Backend Config | `docs/codebase-spec/01_Configuration/ENVIRONMENT.md`<br/>`docs/codebase-spec/01_Configuration/FEATURE_FLAGS.md` | 后端运行配置（dockerpg） |
+| `ruoyi-fastapi-backend/.env.prod` | Backend Config | `docs/codebase-spec/01_Configuration/ENVIRONMENT.md`<br/>`docs/codebase-spec/01_Configuration/FEATURE_FLAGS.md` | 后端运行配置（prod） |
 | `ruoyi-fastapi-backend/Dockerfile.my` | Dockerfile | `docs/codebase-spec/07_Infrastructure/DOCKER.md` | 镜像构建说明 |
 | `ruoyi-fastapi-backend/Dockerfile.pg` | Dockerfile | `docs/codebase-spec/07_Infrastructure/DOCKER.md` | 镜像构建说明 |
 | `ruoyi-fastapi-backend/alembic.ini` | Backend Other | `docs/codebase-spec/00_Overview/ARCHITECTURE.md` | 后端其余实现细节归入架构说明 |
 | `ruoyi-fastapi-backend/alembic/env.py` | Alembic | `docs/codebase-spec/02_Data/MIGRATIONS.md` | 迁移工具 |
+| `ruoyi-fastapi-backend/alembic/README` | Alembic | `docs/codebase-spec/02_Data/MIGRATIONS.md` | 迁移工具说明 |
+| `ruoyi-fastapi-backend/alembic/script.py.mako` | Alembic | `docs/codebase-spec/02_Data/MIGRATIONS.md` | 迁移脚手架模板（mako） |
 | `ruoyi-fastapi-backend/app.py` | Backend Entrypoint | `docs/codebase-spec/00_Overview/ARCHITECTURE.md`<br/>`docs/codebase-spec/00_Overview/PROJECT.md` | 后端启动/生命周期/路由注册 |
 | `ruoyi-fastapi-backend/assets/font/Arial.ttf` | Backend Assets | `docs/codebase-spec/00_Overview/PROJECT.md` | 后端静态资源（文档静态/Logo 等） |
 | `ruoyi-fastapi-backend/common/annotation/log_annotation.py` | Backend Common | `docs/codebase-spec/00_Overview/ARCHITECTURE.md`<br/>`docs/codebase-spec/03_API/ERRORS.md`<br/>`docs/codebase-spec/03_API/ENDPOINTS.md` | 路由、响应模型、常量与装饰器 |
@@ -173,6 +182,7 @@ generated: `2026-02-14 19:47:34 CST`
 | `ruoyi-fastapi-backend/exceptions/handle.py` | Backend Exceptions | `docs/codebase-spec/03_API/ERRORS.md` | 异常映射与响应策略 |
 | `ruoyi-fastapi-backend/middlewares/context_middleware.py` | Backend Middlewares | `docs/codebase-spec/00_Overview/ARCHITECTURE.md` | 中间件链 |
 | `ruoyi-fastapi-backend/middlewares/cors_middleware.py` | Backend Middlewares | `docs/codebase-spec/00_Overview/ARCHITECTURE.md` | 中间件链 |
+| `ruoyi-fastapi-backend/middlewares/demo_mode_middleware.py` | Backend Middlewares | `docs/codebase-spec/00_Overview/ARCHITECTURE.md`<br/>`docs/codebase-spec/01_Configuration/FEATURE_FLAGS.md`<br/>`docs/codebase-spec/03_API/ERRORS.md` | 演示模式：拦截写操作与部分敏感接口 |
 | `ruoyi-fastapi-backend/middlewares/gzip_middleware.py` | Backend Middlewares | `docs/codebase-spec/00_Overview/ARCHITECTURE.md` | 中间件链 |
 | `ruoyi-fastapi-backend/middlewares/handle.py` | Backend Middlewares | `docs/codebase-spec/00_Overview/ARCHITECTURE.md` | 中间件链 |
 | `ruoyi-fastapi-backend/middlewares/trace_middleware/__init__.py` | Backend Middlewares | `docs/codebase-spec/00_Overview/ARCHITECTURE.md` | 中间件链 |
@@ -264,6 +274,17 @@ generated: `2026-02-14 19:47:34 CST`
 | `ruoyi-fastapi-backend/module_generator/entity/do/gen_do.py` | Backend DO (DB/Domain Models) | `docs/codebase-spec/02_Data/ENTITIES.md`<br/>`docs/codebase-spec/02_Data/RELATIONSHIPS.md` | 与 DB 表结构/关系对应 |
 | `ruoyi-fastapi-backend/module_generator/entity/vo/gen_vo.py` | Backend VO (API Models) | `docs/codebase-spec/03_API/openapi.json`<br/>`docs/codebase-spec/03_API/SCHEMA_CATALOG.md` | 字段级 schema 在 OpenAPI |
 | `ruoyi-fastapi-backend/module_generator/service/gen_service.py` | Backend Service | `docs/codebase-spec/04_Business_Logic/IMPLEMENTATION_INDEX.md`<br/>`docs/codebase-spec/04_Business_Logic/services/gen_service.py.md` | 方法级索引（DAO 调用点/异常文案） |
+| `ruoyi-fastapi-backend/module_generator/templates/js/api.js.jinja2` | Backend Other | `docs/codebase-spec/04_Business_Logic/RULES.md`<br/>`docs/codebase-spec/04_Business_Logic/WORKFLOWS.md` | 代码生成：模板（Jinja2） |
+| `ruoyi-fastapi-backend/module_generator/templates/python/controller.py.jinja2` | Backend Other | `docs/codebase-spec/04_Business_Logic/RULES.md`<br/>`docs/codebase-spec/04_Business_Logic/WORKFLOWS.md` | 代码生成：模板（Jinja2） |
+| `ruoyi-fastapi-backend/module_generator/templates/python/dao.py.jinja2` | Backend Other | `docs/codebase-spec/04_Business_Logic/RULES.md`<br/>`docs/codebase-spec/04_Business_Logic/WORKFLOWS.md` | 代码生成：模板（Jinja2） |
+| `ruoyi-fastapi-backend/module_generator/templates/python/do.py.jinja2` | Backend Other | `docs/codebase-spec/04_Business_Logic/RULES.md`<br/>`docs/codebase-spec/04_Business_Logic/WORKFLOWS.md` | 代码生成：模板（Jinja2） |
+| `ruoyi-fastapi-backend/module_generator/templates/python/service.py.jinja2` | Backend Other | `docs/codebase-spec/04_Business_Logic/RULES.md`<br/>`docs/codebase-spec/04_Business_Logic/WORKFLOWS.md` | 代码生成：模板（Jinja2） |
+| `ruoyi-fastapi-backend/module_generator/templates/python/vo.py.jinja2` | Backend Other | `docs/codebase-spec/04_Business_Logic/RULES.md`<br/>`docs/codebase-spec/04_Business_Logic/WORKFLOWS.md` | 代码生成：模板（Jinja2） |
+| `ruoyi-fastapi-backend/module_generator/templates/sql/sql.jinja2` | Backend Other | `docs/codebase-spec/04_Business_Logic/RULES.md`<br/>`docs/codebase-spec/04_Business_Logic/WORKFLOWS.md` | 代码生成：模板（Jinja2） |
+| `ruoyi-fastapi-backend/module_generator/templates/vue/index-tree.vue.jinja2` | Backend Other | `docs/codebase-spec/04_Business_Logic/RULES.md`<br/>`docs/codebase-spec/04_Business_Logic/WORKFLOWS.md` | 代码生成：模板（Jinja2） |
+| `ruoyi-fastapi-backend/module_generator/templates/vue/index.vue.jinja2` | Backend Other | `docs/codebase-spec/04_Business_Logic/RULES.md`<br/>`docs/codebase-spec/04_Business_Logic/WORKFLOWS.md` | 代码生成：模板（Jinja2） |
+| `ruoyi-fastapi-backend/module_generator/templates/vue/v3/index-tree.vue.jinja2` | Backend Other | `docs/codebase-spec/04_Business_Logic/RULES.md`<br/>`docs/codebase-spec/04_Business_Logic/WORKFLOWS.md` | 代码生成：模板（Jinja2） |
+| `ruoyi-fastapi-backend/module_generator/templates/vue/v3/index.vue.jinja2` | Backend Other | `docs/codebase-spec/04_Business_Logic/RULES.md`<br/>`docs/codebase-spec/04_Business_Logic/WORKFLOWS.md` | 代码生成：模板（Jinja2） |
 | `ruoyi-fastapi-backend/module_task/__init__.py` | Backend Other | `docs/codebase-spec/00_Overview/ARCHITECTURE.md` | 后端其余实现细节归入架构说明 |
 | `ruoyi-fastapi-backend/module_task/scheduler_test.py` | Backend Other | `docs/codebase-spec/00_Overview/ARCHITECTURE.md` | 后端其余实现细节归入架构说明 |
 | `ruoyi-fastapi-backend/requirements-pg.txt` | Backend Other | `docs/codebase-spec/00_Overview/ARCHITECTURE.md` | 后端其余实现细节归入架构说明 |
@@ -293,10 +314,20 @@ generated: `2026-02-14 19:47:34 CST`
 | `ruoyi-fastapi-backend/utils/time_format_util.py` | Backend Utils | `docs/codebase-spec/00_Overview/ARCHITECTURE.md`<br/>`docs/codebase-spec/03_API/ERRORS.md`<br/>`docs/codebase-spec/03_API/OPENAPI_SNAPSHOT.md` | 通用工具（日志/响应/导入/安全/文档代理等） |
 | `ruoyi-fastapi-backend/utils/upload_util.py` | Backend Utils | `docs/codebase-spec/00_Overview/ARCHITECTURE.md`<br/>`docs/codebase-spec/03_API/ERRORS.md`<br/>`docs/codebase-spec/03_API/OPENAPI_SNAPSHOT.md` | 通用工具（日志/响应/导入/安全/文档代理等） |
 | `ruoyi-fastapi-frontend/.dockerignore` | Frontend Other | `docs/codebase-spec/07_Infrastructure/DOCKER.md`<br/>`docs/codebase-spec/06_Frontend/OVERVIEW.md` | Docker 构建上下文裁剪（影响镜像产物） |
+| `ruoyi-fastapi-frontend/.env.development` | Frontend Other | `docs/codebase-spec/01_Configuration/ENVIRONMENT.md`<br/>`docs/codebase-spec/06_Frontend/OVERVIEW.md` | 前端构建/运行环境（dev） |
+| `ruoyi-fastapi-frontend/.env.docker` | Frontend Other | `docs/codebase-spec/01_Configuration/ENVIRONMENT.md`<br/>`docs/codebase-spec/06_Frontend/OVERVIEW.md` | 前端构建/运行环境（docker） |
+| `ruoyi-fastapi-frontend/.env.production` | Frontend Other | `docs/codebase-spec/01_Configuration/ENVIRONMENT.md`<br/>`docs/codebase-spec/06_Frontend/OVERVIEW.md` | 前端构建/运行环境（prod） |
+| `ruoyi-fastapi-frontend/.env.staging` | Frontend Other | `docs/codebase-spec/01_Configuration/ENVIRONMENT.md`<br/>`docs/codebase-spec/06_Frontend/OVERVIEW.md` | 前端构建/运行环境（staging） |
+| `ruoyi-fastapi-frontend/.gitignore` | Frontend Other | `docs/codebase-spec/06_Frontend/OVERVIEW.md` | 前端工程忽略规则（开发/构建产物） |
 | `ruoyi-fastapi-frontend/Dockerfile` | Dockerfile | `docs/codebase-spec/07_Infrastructure/DOCKER.md` | 镜像构建说明 |
+| `ruoyi-fastapi-frontend/index.html` | Frontend Entrypoint | `docs/codebase-spec/06_Frontend/OVERVIEW.md` | 前端工程入口（Vite HTML） |
+| `ruoyi-fastapi-frontend/LICENSE` | Frontend Other | `docs/codebase-spec/06_Frontend/OVERVIEW.md` | 前端工程许可/声明 |
+| `ruoyi-fastapi-frontend/bin/build.bat` | Frontend Other | `docs/codebase-spec/06_Frontend/OVERVIEW.md` | 前端构建脚本（Windows） |
+| `ruoyi-fastapi-frontend/bin/package.bat` | Frontend Other | `docs/codebase-spec/06_Frontend/OVERVIEW.md` | 前端打包脚本（Windows） |
+| `ruoyi-fastapi-frontend/bin/run-web.bat` | Frontend Other | `docs/codebase-spec/06_Frontend/OVERVIEW.md` | 前端运行脚本（Windows） |
 | `ruoyi-fastapi-frontend/bin/nginx.dockermy.conf` | Frontend Other | `docs/codebase-spec/06_Frontend/OVERVIEW.md`<br/>`docs/ui-ux-spec/00_UI_SOURCE_SCAN.md` | 其余前端实现归入工程概览/扫描 |
 | `ruoyi-fastapi-frontend/bin/nginx.dockerpg.conf` | Frontend Other | `docs/codebase-spec/06_Frontend/OVERVIEW.md`<br/>`docs/ui-ux-spec/00_UI_SOURCE_SCAN.md` | 其余前端实现归入工程概览/扫描 |
-| `ruoyi-fastapi-frontend/package-lock.json` | Frontend Other | `docs/codebase-spec/06_Frontend/OVERVIEW.md`<br/>`docs/ui-ux-spec/00_UI_SOURCE_SCAN.md` | 其余前端实现归入工程概览/扫描 |
+| `ruoyi-fastapi-frontend/html/ie.html` | Frontend Other | `docs/codebase-spec/06_Frontend/OVERVIEW.md` | 前端兼容性静态页（IE 提示） |
 | `ruoyi-fastapi-frontend/package.json` | Frontend Other | `docs/codebase-spec/06_Frontend/OVERVIEW.md`<br/>`docs/ui-ux-spec/00_UI_SOURCE_SCAN.md` | 其余前端实现归入工程概览/扫描 |
 | `ruoyi-fastapi-frontend/public/favicon.ico` | Frontend Assets | `docs/ui-ux-spec/06_Assets/ASSETS.md`<br/>`docs/ui-ux-spec/00_UI_SOURCE_SCAN.md` | UI 资产（图标/图片/字体等） |
 | `ruoyi-fastapi-frontend/src/App.vue` | Frontend Other | `docs/codebase-spec/06_Frontend/OVERVIEW.md`<br/>`docs/ui-ux-spec/00_UI_SOURCE_SCAN.md` | 其余前端实现归入工程概览/扫描 |
@@ -324,6 +355,14 @@ generated: `2026-02-14 19:47:34 CST`
 | `ruoyi-fastapi-frontend/src/assets/401_images/401.gif` | Frontend Assets | `docs/ui-ux-spec/06_Assets/ASSETS.md`<br/>`docs/ui-ux-spec/00_UI_SOURCE_SCAN.md` | UI 资产（图标/图片/字体等） |
 | `ruoyi-fastapi-frontend/src/assets/404_images/404.png` | Frontend Assets | `docs/ui-ux-spec/06_Assets/ASSETS.md`<br/>`docs/ui-ux-spec/00_UI_SOURCE_SCAN.md` | UI 资产（图标/图片/字体等） |
 | `ruoyi-fastapi-frontend/src/assets/404_images/404_cloud.png` | Frontend Assets | `docs/ui-ux-spec/06_Assets/ASSETS.md`<br/>`docs/ui-ux-spec/00_UI_SOURCE_SCAN.md` | UI 资产（图标/图片/字体等） |
+| `ruoyi-fastapi-frontend/src/assets/styles/btn.scss` | Frontend Assets | `docs/ui-ux-spec/01_Foundation/FOUNDATION.md`<br/>`docs/ui-ux-spec/00_UI_SOURCE_SCAN.md` | 全局样式/主题变量（SCSS） |
+| `ruoyi-fastapi-frontend/src/assets/styles/element-ui.scss` | Frontend Assets | `docs/ui-ux-spec/01_Foundation/FOUNDATION.md`<br/>`docs/ui-ux-spec/00_UI_SOURCE_SCAN.md` | 全局样式/主题变量（SCSS） |
+| `ruoyi-fastapi-frontend/src/assets/styles/index.scss` | Frontend Assets | `docs/ui-ux-spec/01_Foundation/FOUNDATION.md`<br/>`docs/ui-ux-spec/00_UI_SOURCE_SCAN.md` | 全局样式/主题变量（SCSS） |
+| `ruoyi-fastapi-frontend/src/assets/styles/mixin.scss` | Frontend Assets | `docs/ui-ux-spec/01_Foundation/FOUNDATION.md`<br/>`docs/ui-ux-spec/00_UI_SOURCE_SCAN.md` | 全局样式/主题变量（SCSS） |
+| `ruoyi-fastapi-frontend/src/assets/styles/ruoyi.scss` | Frontend Assets | `docs/ui-ux-spec/01_Foundation/FOUNDATION.md`<br/>`docs/ui-ux-spec/00_UI_SOURCE_SCAN.md` | 全局样式/主题变量（SCSS） |
+| `ruoyi-fastapi-frontend/src/assets/styles/sidebar.scss` | Frontend Assets | `docs/ui-ux-spec/01_Foundation/FOUNDATION.md`<br/>`docs/ui-ux-spec/00_UI_SOURCE_SCAN.md` | 全局样式/主题变量（SCSS） |
+| `ruoyi-fastapi-frontend/src/assets/styles/transition.scss` | Frontend Assets | `docs/ui-ux-spec/01_Foundation/FOUNDATION.md`<br/>`docs/ui-ux-spec/00_UI_SOURCE_SCAN.md` | 全局样式/主题变量（SCSS） |
+| `ruoyi-fastapi-frontend/src/assets/styles/variables.module.scss` | Frontend Assets | `docs/ui-ux-spec/01_Foundation/FOUNDATION.md`<br/>`docs/ui-ux-spec/00_UI_SOURCE_SCAN.md` | 全局样式/主题变量（SCSS） |
 | `ruoyi-fastapi-frontend/src/assets/icons/svg/404.svg` | Frontend Assets | `docs/ui-ux-spec/06_Assets/ASSETS.md`<br/>`docs/ui-ux-spec/00_UI_SOURCE_SCAN.md` | UI 资产（图标/图片/字体等） |
 | `ruoyi-fastapi-frontend/src/assets/icons/svg/ai-chat.svg` | Frontend Assets | `docs/ui-ux-spec/06_Assets/ASSETS.md`<br/>`docs/ui-ux-spec/00_UI_SOURCE_SCAN.md` | UI 资产（图标/图片/字体等） |
 | `ruoyi-fastapi-frontend/src/assets/icons/svg/ai-manage.svg` | Frontend Assets | `docs/ui-ux-spec/06_Assets/ASSETS.md`<br/>`docs/ui-ux-spec/00_UI_SOURCE_SCAN.md` | UI 资产（图标/图片/字体等） |
