@@ -404,3 +404,151 @@
   - Source anchors：anchors_total=`167`，missing_total=`0`（见 `SOURCE_ANCHOR_REPORT.md`）
   - E2E tests：`test_*.py` 文件数=`19`（含像素级视觉基线）
   - 视觉基线 PNG：`32` 张（`docs/ui-ux-spec/08_Visual_Baseline/screenshots/`）
+
+---
+
+## 2026-02-16 16:41 CST
+
+### Timestamp
+
+- When: `2026-02-16 16:41 CST`
+- Who: `agent`
+- Context: `全仓库规格一致性复核：补齐演示模式（Demo Mode）与 Code→Spec 对照，并校验 OpenAPI 快照漂移`
+
+### Goal（this step）
+
+- Goal: 以当前源码为事实依据，确保规格文档与实现一一对应，满足“不读源码即可复刻”的交付标准。
+
+### Action
+
+- Repo baseline:
+  - `git rev-parse HEAD` → `55c63245ccd3b5dd3c3f6b17e9e6c817d9112e2d`
+- Files touched:
+  - `docs/codebase-spec/01_Configuration/ENVIRONMENT.md`（补齐 `APP_WORKERS` / `APP_DEMO_MODE`）
+  - `docs/codebase-spec/01_Configuration/FEATURE_FLAGS.md`（补齐 `APP_WORKERS` / `APP_DEMO_MODE` 并固化演示模式拦截规则）
+  - `docs/codebase-spec/03_API/openapi.json`、`docs/codebase-spec/03_API/openapi.sha256`（与运行态导出对齐）
+  - `docs/codebase-spec/09_Verification/CODE_TO_SPEC_MAP.md`（对照表全覆盖修正：移除陈旧条目 + 补齐缺失文件）
+  - `docs/codebase-spec/09_Verification/SPEC_POINTERS_VALIDATION_REPORT.md`（同步对照表指针校验统计）
+- Commands run:
+  - `rg -n "TODO|TBD|FIXME|待补充|PLACEHOLDER|未完成|WIP" docs ...`（placeholder 扫描）
+  - `python`（校验 Source anchors：anchors_total/missing_total）
+  - `python`（对照表 coverage：fs_files/mapped_files/missing/stale）
+  - `docker compose -f docker-compose.my.yml up -d --build ruoyi-mysql ruoyi-redis ruoyi-backend-my`
+  - `curl http://127.0.0.1:19099/openapi.json`（抓取运行态 OpenAPI 并做 canonicalize）
+  - `docker compose -f docker-compose.my.yml down`
+
+### Result
+
+- Findings:
+  - `ENVIRONMENT.md` 未覆盖 `APP_WORKERS` / `APP_DEMO_MODE`（实现存在且 `.env.*` 已配置）。
+  - `CODE_TO_SPEC_MAP.md` 存在 “43 个漏映射文件 + 3 个已不存在条目”（对照表与当前文件系统不一致）。
+  - OpenAPI 快照与运行态导出不一致（主要差异：`info.version` 与 `ValidationError` schema）。
+- Fixes applied:
+  - 环境变量表与开关文档已补齐，并固化演示模式拦截路径与返回语义（`code=601`/HTTP 200）。
+  - Code→Spec 对照表已修正为当前仓库范围内全覆盖：Files scanned=`563`，Missing=`0`，Stale=`0`。
+  - OpenAPI 快照已与运行态导出对齐（校验：JSON object_equal=true），并更新 `openapi.sha256`。
+- Post-check:
+  - Source anchors：anchors_total=`167`，missing_total=`0`
+  - Spec pointers：Pointers extracted=`76`，Missing pointers=`0`
+
+---
+
+## 2026-02-16 17:25 CST
+
+### Timestamp
+
+- When: `2026-02-16 17:25 CST`
+- Who: `agent`
+- Context: `再复核：确认 Docker 清理干净 + 修正 placeholder 扫描口径误命中`
+
+### Goal（this step）
+
+- Goal: 确保本任务拉起的 Docker Compose 环境无残留，并保证 placeholder 扫描不因“记录类文档”误报。
+
+### Action
+
+- Files touched:
+  - `docs/codebase-spec/09_Verification/PLACEHOLDER_SCAN_REPORT.md`（扫描口径：只扫 spec 目录）
+  - `docs/task-summaries/2026-02-16-spec-revalidation-demo-mode-and-openapi.md`（同步测试计划的扫描命令口径）
+- Commands run:
+  - `docker compose -f docker-compose.my.yml ps -a`
+  - `docker compose -f docker-compose.pg.yml ps -a`
+  - `docker compose -f docker-compose.my.yml down --remove-orphans`
+  - `docker compose -f docker-compose.pg.yml down --remove-orphans`
+  - `rg -n "TODO|TBD|FIXME|待补充|PLACEHOLDER|未完成|WIP" docs ...`（验证误命中来自 task summary）
+  - `rg -n "TODO|TBD|FIXME|待补充|PLACEHOLDER|未完成|WIP" docs/codebase-spec docs/ui-ux-spec ...`（修正后复跑，hits=0）
+
+### Result
+
+- Outcome:
+  - Docker Compose（本仓库的 `docker-compose.my.yml` / `docker-compose.pg.yml`）均无残留容器（`ps -a` 为空）。
+  - placeholder 扫描口径已与“扫描范围说明”一致（仅扫描 spec 目录），并复跑确认 hits=`0`。
+
+---
+
+## 2026-02-18 17:03 CST
+
+### Timestamp
+
+- When: `2026-02-18 17:03 CST`
+- Who: `agent`
+- Context: `结合外部 DAG/元任务/前端规格，评估本仓库后台能力可抽取复用点（权限/模块/调度/审计/AI 管理等）`
+
+### Goal（this step）
+
+- Goal: 从本仓库规格文档出发，整理可复用后台能力清单，并输出可落地的抽取/复用建议报告。
+
+### Action
+
+- Files touched:
+  - `docs/specs/2026-02-18-ruoyi-backend-capability-extraction-for-aigc-os.md`（新增：复用评估报告）
+  - `docs/task-summaries/2026-02-18-backend-capability-extraction-report.md`（新增：任务总结）
+  - `DOCS_INDEX.md`（登记新增文档）
+- External inputs read:
+  - `/home/gavin/workspaces/codes/befun.studio/docs/original/aigc_dag_perfect.html`
+  - `/home/gavin/workspaces/codes/befun.studio/docs/original/AI Agent meta-task brief.xlsx`
+  - `/home/gavin/workspaces/codes/aigc-os-v5/*`（v5 UI/UX 规格）
+- Commands run (key):
+  - `bash /home/gavin/.claude/skills/doc-processor/install.sh`（安装 openpyxl 等，用于读取 xlsx）
+  - `python3 /home/gavin/.claude/skills/doc-processor/doc_utils.py read_excel ... --sheet AIGC`（读取元任务概要）
+  - `python3 - <<'PY' ...`（解析 `docs/codebase-spec/03_API/openapi.json` 的路径分组统计）
+
+### Result
+
+- Outcome:
+  - 形成“平台层可复用能力”清单：Auth/JWT/在线态、RBAC、菜单/模块树、配置/字典、审计监控、Scheduler、上传/导出、AI 模型/对话等，并给出与 AIGC OS v5 的对齐建议与抽取边界。
+
+---
+
+## 2026-02-21 00:10 CST
+
+### Timestamp
+
+- When: `2026-02-21 00:10 CST`
+- Who: `agent`
+- Context: `Git 更新与推送：远端删除 AGENTS.md，但本地保留；仅推送 docs/codebase-spec/*`
+
+### Goal（this step）
+
+- Goal: 在不推送本地 worklog/spec/task-summary 的前提下，同步远端更新，并将 `docs/codebase-spec/*` 的改动提交并推送到远端。
+
+### Action
+
+- Decisions (human confirmed):
+  - 允许远端删除 `AGENTS.md`，但本地需要保留，并写入 `.gitignore` 忽略。
+  - 仅推送 `docs/codebase-spec/*`；其他文档（如 `DOCS_INDEX.md`、`docs/worklog.md`、`docs/specs/*`、`docs/task-summaries/*`）只在本地留存。
+- Commands run (key):
+  - `git stash push -m 'temp: keep local AGENTS.md before pull' -- AGENTS.md`
+  - `git pull --ff-only origin master`
+  - `git show HEAD~1:AGENTS.md > AGENTS.md`（恢复为本地忽略文件）
+  - `git check-ignore -v AGENTS.md`（确认被 `.gitignore` 忽略）
+  - `git add docs/codebase-spec`
+  - `git commit -m "docs(codebase-spec): update config/api/verification"`
+  - `git push origin master`（改用 HTTPS + `gh auth git-credential` 以避免 SSH publickey 失败）
+
+### Result
+
+- Outcome:
+  - `master` 已 fast-forward 同步远端 2 个提交（含 `.gitignore` 忽略 `AGENTS.md`，并在远端删除跟踪）。
+  - 本地 `AGENTS.md` 已恢复并确认被忽略（不会进入 Git）。
+  - 已将 `docs/codebase-spec/*` 的变更推送到远端：commit `71f42ac`。

@@ -22,6 +22,7 @@
 
 - `docs/specs/README.md`：规格/设计文档约定与写法说明（每个功能/模块一份 spec）。
 - `docs/plans/README.md`：计划与草案归档说明（按日期/主题归档）。
+- `docs/specs/2026-02-18-ruoyi-backend-capability-extraction-for-aigc-os.md`：评估：可抽取复用的后台能力清单（面向 AIGC OS / DAG 业务流）。
 
 ---
 
@@ -31,6 +32,8 @@
 - `docs/task-summaries/README.md`：任务总结目录说明（每次结项一份总结）。
 - `docs/task-summaries/2026-02-07-codebase-spec-and-uiux-spec.md`：任务总结：可复刻规格文档 + 前端 UI/UX 规格（UI-only）。
 - `docs/task-summaries/2026-02-14-spec-doc-review-and-visual-baseline.md`：任务总结：规格文档复刻审查 + 像素级视觉基线稳定（可复跑）。
+- `docs/task-summaries/2026-02-16-spec-revalidation-demo-mode-and-openapi.md`：任务总结：规格一致性复核（Demo Mode + OpenAPI + Code→Spec）。
+- `docs/task-summaries/2026-02-18-backend-capability-extraction-report.md`：任务总结：后台能力可抽取复用评估报告（面向 AIGC OS / DAG）。
 - `docs/templates/task-summary-template.md`：任务总结模板（复制填空）。
 
 ---
